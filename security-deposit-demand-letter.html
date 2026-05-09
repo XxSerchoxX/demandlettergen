@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Deposit Demand Letter Generator (Free) | DemandLetterGen</title>
+  <meta name="description" content="Generate a free security deposit demand letter in seconds. Get your deposit back fast with a professional, legally-structured letter. No signup required.">
+  <link rel="canonical" href="https://demandlettergen.com/security-deposit-demand-letter">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVL6C1MYCE"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QVL6C1MYCE');</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--ink:#1a1a18;--paper:#f7f4ee;--cream:#ede9df;--accent:#c94f2c;--muted:#7a7670;--border:#d8d3c8;--white:#ffffff}
+    body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7}
+    header{background:var(--ink);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+    .logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--paper);text-decoration:none}
+    .logo span{color:var(--accent)}
+    nav a{color:rgba(247,244,238,0.7);text-decoration:none;font-size:13px;margin-left:1.5rem}
+    .container{max-width:760px;margin:0 auto;padding:3rem 2rem}
+    h1{font-family:'Playfair Display',serif;font-size:clamp(26px,4vw,40px);font-weight:600;line-height:1.2;margin-bottom:1rem}
+    h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:600;margin:2.5rem 0 1rem}
+    p{margin-bottom:1rem;font-size:15px;color:#333}
+    ul{padding-left:1.5rem;margin-bottom:1rem}
+    li{font-size:15px;color:#333;margin-bottom:0.4rem;line-height:1.6}
+    .lead{font-size:17px;color:var(--muted);margin-bottom:2rem;line-height:1.8}
+    .divider{height:1px;background:var(--border);margin:2.5rem 0}
+    .callout{background:var(--cream);border-left:3px solid var(--accent);padding:1.2rem 1.5rem;border-radius:0 8px 8px 0;margin:1.5rem 0}
+    .callout p{margin:0;font-size:14px}
+    .tool-card{background:var(--white);border-radius:16px;box-shadow:0 1px 3px rgba(26,26,24,.08),0 4px 16px rgba(26,26,24,.06);overflow:hidden;border:1px solid var(--border);margin:2rem 0}
+    .tool-header{background:var(--ink);padding:1rem 1.5rem;display:flex;align-items:center;gap:.8rem}
+    .tool-header-dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+    .tool-header h2{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--paper);margin:0}
+    .tool-body{padding:1.5rem}
+    .field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+    label{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+    input,select,textarea{font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:9px 12px;outline:none;width:100%;transition:border-color .15s}
+    input:focus,select:focus,textarea:focus{border-color:var(--ink);background:var(--white)}
+    textarea{resize:vertical;min-height:80px;line-height:1.6}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+    .btn-generate{width:100%;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:13px;background:var(--accent);color:var(--white);border:none;border-radius:10px;cursor:pointer;margin-top:8px}
+    .btn-generate:disabled{opacity:.45;cursor:not-allowed}
+    .output-section{margin-top:1.5rem;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    .output-bar{background:var(--cream);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+    .output-bar span{font-size:11px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+    .output-actions{display:flex;gap:8px}
+    .btn-action{font-family:'DM Sans',sans-serif;font-size:12px;padding:5px 12px;border-radius:6px;cursor:pointer;border:1px solid var(--border);background:var(--white);color:var(--ink)}
+    .btn-action.pdf{background:var(--accent);color:var(--white);border-color:var(--accent)}
+    .output-text{padding:1.5rem;font-size:13.5px;line-height:1.9;white-space:pre-wrap;background:var(--white)}
+    .loading-state{padding:1.5rem;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px;background:var(--white)}
+    .spinner{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .error-state{padding:1rem 1.5rem;background:#fff5f3;color:var(--accent);font-size:13px}
+    .disclaimer{background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:1rem 1.4rem;font-size:12px;color:var(--muted);margin:1rem 0}
+    footer{background:var(--ink);padding:2rem;text-align:center}
+    footer p{font-size:12px;color:rgba(247,244,238,0.4);max-width:500px;margin:.5rem auto 0}
+    .breadcrumb{font-size:12px;color:var(--muted);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<header>
+  <a href="/" class="logo">Demand<span>Letter</span>Gen</a>
+  <nav>
+    <a href="/">Generator</a>
+    <a href="/demand-letter-template">Templates</a>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a> → Security Deposit Demand Letter</div>
+
+  <h1>Security Deposit Demand Letter Generator</h1>
+  <p class="lead">Your landlord is required by law to return your deposit. If they haven't, a formal demand letter is your first — and often most effective — step to getting it back.</p>
+
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-header-dot"></div>
+      <h2>Generate Your Security Deposit Demand Letter</h2>
+    </div>
+    <div class="tool-body">
+      <div class="form-grid">
+        <div class="field"><label>Your full name</label><input id="senderName" type="text" placeholder="Jane Smith"></div>
+        <div class="field"><label>Your current address</label><input id="senderAddress" type="text" placeholder="123 New St, City, State"></div>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label>Landlord name</label><input id="recipientName" type="text" placeholder="John Doe / ABC Properties"></div>
+        <div class="field"><label>Landlord address</label><input id="recipientAddress" type="text" placeholder="456 Oak Ave, City, State"></div>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label>Deposit amount ($)</label><input id="amount" type="text" placeholder="1,500"></div>
+        <div class="field"><label>Move-out date</label><input id="moveout" type="text" placeholder="April 1, 2026"></div>
+      </div>
+      <div class="form-grid">
+        <div class="field"><label>Rental property address</label><input id="property" type="text" placeholder="789 Rental St, City, State"></div>
+        <div class="field"><label>Your state</label>
+          <select id="state">
+            <option value="">Select state</option>
+            <option>California</option><option>Texas</option><option>Florida</option><option>New York</option><option>Illinois</option><option>Pennsylvania</option><option>Ohio</option><option>Georgia</option><option>North Carolina</option><option>Michigan</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Additional details (optional)</label><textarea id="situation" placeholder="Describe the condition you left the property in, any evidence you have (photos, move-out checklist), and any communication with the landlord..."></textarea></div>
+      <button class="btn-generate" id="generateBtn" onclick="generateLetter()">Generate My Demand Letter →</button>
+      <div id="outputSection" class="output-section" style="display:none">
+        <div class="output-bar"><span>Generated Letter</span><div class="output-actions"><button class="btn-action" onclick="copyLetter()">Copy</button><button class="btn-action pdf" onclick="downloadPDF()">Download PDF</button></div></div>
+        <div id="loadingState" class="loading-state" style="display:none"><div class="spinner"></div><span>Writing your demand letter…</span></div>
+        <div id="errorState" class="error-state" style="display:none"></div>
+        <pre id="outputText" class="output-text" style="display:none"></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer"><strong>Legal disclaimer:</strong> This tool generates template letters for informational purposes only and does not constitute legal advice.</div>
+
+  <h2>Your Rights as a Tenant</h2>
+  <p>In most US states, landlords are legally required to return your security deposit within 14 to 30 days of move-out, along with an itemized list of any deductions. Failure to do so can entitle you to additional damages — sometimes double or triple the deposit amount.</p>
+
+  <h2>What to Include in Your Letter</h2>
+  <ul>
+    <li>The exact amount of the deposit you paid</li>
+    <li>Your move-out date and the rental address</li>
+    <li>The condition you left the property in</li>
+    <li>Any prior communication with the landlord</li>
+    <li>A firm deadline for return (14 days is standard)</li>
+    <li>Consequences if the deposit is not returned</li>
+  </ul>
+
+  <h2>What to Do If the Landlord Doesn't Respond</h2>
+  <p>If your landlord ignores your demand letter, your next step is small claims court. Most states allow tenants to sue for the deposit plus additional penalties. The demand letter you generate here will serve as evidence that you made a good-faith attempt to resolve the matter.</p>
+
+  <div class="callout">
+    <p><strong>Tip:</strong> Send your demand letter via certified mail with return receipt. This gives you legal proof that the landlord received it.</p>
+  </div>
+</div>
+
+<footer>
+  <a href="/" class="logo" style="font-family:'Playfair Display',serif;font-size:16px;color:var(--paper);text-decoration:none">Demand<span style="color:var(--accent)">Letter</span>Gen</a>
+  <p>For informational purposes only. Not legal advice. © 2026 DemandLetterGen.com</p>
+</footer>
+
+<script>
+async function generateLetter(){
+  const senderName=document.getElementById('senderName').value.trim();
+  const recipientName=document.getElementById('recipientName').value.trim();
+  const amount=document.getElementById('amount').value.trim();
+  if(!senderName||!recipientName||!amount){alert('Please fill in your name, landlord name, and deposit amount.');return;}
+  const senderAddress=document.getElementById('senderAddress').value.trim();
+  const recipientAddress=document.getElementById('recipientAddress').value.trim();
+  const moveout=document.getElementById('moveout').value.trim();
+  const property=document.getElementById('property').value.trim();
+  const state=document.getElementById('state').value;
+  const situation=document.getElementById('situation').value.trim();
+  const today=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  const prompt=`Write a professional security deposit demand letter with these details:\nDate: ${today}\nTenant: ${senderName}${senderAddress?', '+senderAddress:''}\nLandlord: ${recipientName}${recipientAddress?', '+recipientAddress:''}\nDeposit amount: $${amount}\nRental property: ${property||'not specified'}\nMove-out date: ${moveout||'recently'}\nState: ${state||'not specified'}\nAdditional details: ${situation||'none'}\n\nWrite a complete, professional demand letter for return of the security deposit. Include date, addresses, clear demand for $${amount}, a 14-day deadline, reference to state landlord-tenant law, and consequences (small claims court). Be firm but professional. Format as a real letter ready to send.`;
+  const btn=document.getElementById('generateBtn');
+  btn.disabled=true;btn.textContent='Generating…';
+  const outputSection=document.getElementById('outputSection');
+  const loadingState=document.getElementById('loadingState');
+  const outputText=document.getElementById('outputText');
+  const errorState=document.getElementById('errorState');
+  outputSection.style.display='block';loadingState.style.display='flex';outputText.style.display='none';errorState.style.display='none';
+  try{
+    const response=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
+    const data=await response.json();
+    if(data.text){loadingState.style.display='none';outputText.style.display='block';outputText.textContent=data.text;}
+    else throw new Error('No response');
+  }catch(err){loadingState.style.display='none';errorState.style.display='block';errorState.textContent='Something went wrong. Please try again.';}
+  btn.disabled=false;btn.textContent='Generate My Demand Letter →';
+}
+function copyLetter(){const text=document.getElementById('outputText').textContent;navigator.clipboard.writeText(text).then(()=>{const btn=event.target;btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy',2000);});}
+function downloadPDF(){const text=document.getElementById('outputText').textContent;if(!text)return;const{jsPDF}=window.jspdf;const doc=new jsPDF({unit:'mm',format:'letter'});const margin=25;const maxWidth=doc.internal.pageSize.getWidth()-margin*2;doc.setFont('times','normal');doc.setFontSize(11);const lines=doc.splitTextToSize(text,maxWidth);let y=margin;lines.forEach(line=>{if(y>doc.internal.pageSize.getHeight()-margin){doc.addPage();y=margin;}doc.text(line,margin,y);y+=6;});doc.save('security-deposit-demand-letter.pdf');}
+</script>
+</body>
+</html>
