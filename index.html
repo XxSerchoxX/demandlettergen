@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVL6C1MYCE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-QVL6C1MYCE');
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free AI Demand Letter Generator | DemandLetterGen.com</title>
@@ -19,798 +12,281 @@
   <link rel="canonical" href="https://demandlettergen.com">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- jsPDF for PDF download -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVL6C1MYCE"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-QVL6C1MYCE');</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --ink: #1a1a18;
       --paper: #f7f4ee;
       --cream: #ede9df;
       --accent: #c94f2c;
-      --accent-light: #f2e8e4;
       --muted: #7a7670;
       --border: #d8d3c8;
       --white: #ffffff;
-      --shadow: 0 1px 3px rgba(26,26,24,0.08), 0 4px 16px rgba(26,26,24,0.06);
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    /* ── HEADER ── */
-    header {
-      background: var(--ink);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      color: var(--paper);
-      letter-spacing: -0.3px;
-    }
-
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    header { background: var(--ink); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 52px; position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--paper); text-decoration: none; }
     .logo span { color: var(--accent); }
-
-    nav a {
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 400;
-      margin-left: 1.5rem;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
-
-    nav a:hover { opacity: 1; }
-
-    /* ── HERO ── */
-    .hero {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: var(--accent-light);
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 500;
-      padding: 4px 12px;
-      border-radius: 99px;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 5vw, 46px);
-      font-weight: 600;
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto 1.5rem;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-num {
-      display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-
-    .stat-label {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    /* ── TOOL CARD ── */
-    .tool-card {
-      max-width: 720px;
-      margin: 0 auto 3rem;
-      background: var(--white);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .tool-header {
-      background: var(--ink);
-      padding: 1.2rem 1.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .tool-header-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .tool-header h2 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--paper);
-      letter-spacing: 0.02em;
-    }
-
-    .tool-body { padding: 2rem; }
-
-    /* Type selector */
-    .section-label {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 0.6rem;
-    }
-
-    .type-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 1.8rem;
-    }
-
-    .type-btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      padding: 10px 8px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--paper);
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.15s;
-      text-align: center;
-      line-height: 1.3;
-    }
-
+    nav a { color: rgba(247,244,238,0.65); text-decoration: none; font-size: 13px; margin-left: 1.5rem; transition: color 0.15s; }
+    nav a:hover { color: var(--paper); }
+    .hero { background: var(--ink); padding: 2rem 2rem 2.5rem; text-align: center; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 36px); font-weight: 600; color: var(--paper); line-height: 1.2; margin-bottom: 0.5rem; letter-spacing: -0.3px; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p { font-size: 14px; color: rgba(247,244,238,0.55); margin-bottom: 1.2rem; }
+    .hero-pills { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
+    .pill { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: rgba(247,244,238,0.7); font-size: 12px; padding: 4px 12px; border-radius: 99px; }
+    .tool-wrap { max-width: 700px; margin: 0 auto; padding: 0 1rem; transform: translateY(-1.5rem); }
+    .tool-card { background: var(--white); border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(26,26,24,0.12); overflow: hidden; }
+    .tool-tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--cream); }
+    .tool-tab { flex: 1; padding: 10px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; color: var(--muted); background: transparent; border: none; cursor: pointer; transition: all 0.15s; border-bottom: 2px solid transparent; }
+    .tool-tab.active { color: var(--accent); border-bottom-color: var(--accent); background: var(--white); }
+    .tool-body { padding: 1.5rem; }
+    .type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 1.2rem; }
+    .type-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; padding: 8px 6px; border: 1px solid var(--border); border-radius: 8px; background: var(--paper); color: var(--muted); cursor: pointer; transition: all 0.12s; text-align: center; line-height: 1.3; }
     .type-btn:hover { border-color: var(--ink); color: var(--ink); }
-
-    .type-btn.active {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--white);
-    }
-
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: var(--cream);
-      margin: 1.5rem 0;
-    }
-
-    /* Form grid */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
+    .type-btn.active { background: var(--ink); border-color: var(--ink); color: var(--white); }
+    .divider { height: 1px; background: var(--cream); margin: 1.2rem 0; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
     .form-grid.full { grid-template-columns: 1fr; }
-
-    .field { display: flex; flex-direction: column; gap: 5px; }
-
-    label {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-    }
-
-    input, select, textarea {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      color: var(--ink);
-      background: var(--paper);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 9px 12px;
-      outline: none;
-      width: 100%;
-      transition: border-color 0.15s, background 0.15s;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--ink);
-      background: var(--white);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 90px;
-      line-height: 1.6;
-    }
-
-    /* State select */
-    select {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7670' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 32px;
-    }
-
-    /* Tone selector */
-    .tone-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .tone-btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      padding: 6px 14px;
-      border: 1px solid var(--border);
-      border-radius: 99px;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-
-    .tone-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--white);
-    }
-
-    /* CTA Button */
-    .btn-generate {
-      width: 100%;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      padding: 14px;
-      background: var(--accent);
-      color: var(--white);
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
-      margin-top: 8px;
-      letter-spacing: 0.01em;
-    }
-
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    label { font-size: 10px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+    input, select, textarea { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink); background: var(--paper); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; outline: none; width: 100%; transition: border-color 0.15s, background 0.15s; }
+    input:focus, select:focus, textarea:focus { border-color: var(--ink); background: var(--white); }
+    textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+    select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%237a7670' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+    .tone-row { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+    .tone-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; padding: 5px 12px; border: 1px solid var(--border); border-radius: 99px; background: transparent; color: var(--muted); cursor: pointer; transition: all 0.12s; }
+    .tone-btn.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+    .btn-generate { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; padding: 13px; background: var(--accent); color: var(--white); border: none; border-radius: 10px; cursor: pointer; transition: opacity 0.15s, transform 0.1s; }
     .btn-generate:hover { opacity: 0.9; transform: translateY(-1px); }
-    .btn-generate:active { transform: translateY(0); }
     .btn-generate:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-
-    /* Output */
-    .output-section {
-      margin-top: 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .output-bar {
-      background: var(--cream);
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .output-bar span {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-    }
-
-    .output-actions { display: flex; gap: 8px; }
-
-    .btn-action {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 5px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.15s;
-      border: 1px solid var(--border);
-      background: var(--white);
-      color: var(--ink);
-    }
-
+    .output-section { margin-top: 1.2rem; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+    .output-bar { background: var(--cream); padding: 9px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+    .output-bar span { font-size: 10px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+    .output-actions { display: flex; gap: 6px; }
+    .btn-action { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 6px; cursor: pointer; border: 1px solid var(--border); background: var(--white); color: var(--ink); transition: all 0.12s; }
     .btn-action:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
     .btn-action.pdf { background: var(--accent); color: var(--white); border-color: var(--accent); }
-    .btn-action.pdf:hover { opacity: 0.85; }
-
-    .output-text {
-      padding: 1.5rem;
-      font-size: 13.5px;
-      line-height: 1.9;
-      color: var(--ink);
-      white-space: pre-wrap;
-      background: var(--white);
-      font-family: 'DM Sans', sans-serif;
-    }
-
-    .loading-state {
-      padding: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 14px;
-      background: var(--white);
-    }
-
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      flex-shrink: 0;
-    }
-
+    .output-text { padding: 1.2rem; font-size: 13px; line-height: 1.9; color: var(--ink); white-space: pre-wrap; background: var(--white); }
+    .loading-state { padding: 1.5rem; display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; background: var(--white); }
+    .spinner { width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    .error-state {
-      padding: 1rem 1.5rem;
-      background: #fff5f3;
-      color: var(--accent);
-      font-size: 13px;
-    }
-
-    /* ── DISCLAIMER ── */
-    .disclaimer {
-      max-width: 720px;
-      margin: 0 auto 3rem;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1rem 1.4rem;
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .disclaimer strong { color: var(--ink); }
-
-    /* ── HOW IT WORKS ── */
-    .section {
-      max-width: 720px;
-      margin: 0 auto 4rem;
-      padding: 0 2rem;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.3px;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .step {
-      padding: 1.4rem;
-      background: var(--white);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-
-    .step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.6rem;
-    }
-
-    .step h3 {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-      color: var(--ink);
-    }
-
-    .step p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ── FAQ ── */
-    .faq-list { display: flex; flex-direction: column; gap: 0; }
-
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-      padding: 1.1rem 0;
-    }
-
-    .faq-q {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .faq-q::after {
-      content: '+';
-      font-size: 20px;
-      color: var(--muted);
-      font-weight: 300;
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
-
+    .error-state { padding: 1rem 1.2rem; background: #fff5f3; color: var(--accent); font-size: 13px; }
+    .example-letter { background: var(--paper); border-radius: 8px; padding: 1.5rem; font-size: 13px; line-height: 1.9; color: var(--ink); white-space: pre-wrap; border: 1px solid var(--border); position: relative; max-height: 280px; overflow: hidden; }
+    .example-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(transparent, var(--white)); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 12px; }
+    .example-cta { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--accent); background: var(--white); border: 1px solid var(--accent); border-radius: 6px; padding: 6px 16px; cursor: pointer; }
+    .disclaimer { max-width: 700px; margin: 0 auto 2rem; padding: 0 1rem; font-size: 11px; color: var(--muted); line-height: 1.5; }
+    .section { max-width: 700px; margin: 0 auto 3rem; padding: 0 1rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: var(--ink); margin-bottom: 1.2rem; letter-spacing: -0.3px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .step { padding: 1.2rem; background: var(--white); border-radius: 12px; border: 1px solid var(--border); }
+    .step-num { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 600; color: var(--accent); line-height: 1; margin-bottom: 0.5rem; }
+    .step h3 { font-size: 13px; font-weight: 500; margin-bottom: 0.3rem; }
+    .step p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .use-cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .use-case { padding: 1rem 1.2rem; background: var(--white); border-radius: 10px; border: 1px solid var(--border); }
+    .use-case h3 { font-size: 13px; font-weight: 500; margin-bottom: 0.25rem; }
+    .use-case p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .internal-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 3rem; }
+    .int-link { display: block; padding: 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+    .int-link:hover { border-color: var(--accent); }
+    .int-link-icon { font-size: 20px; margin-bottom: 0.4rem; }
+    .int-link h3 { font-size: 13px; font-weight: 500; margin-bottom: 0.2rem; }
+    .int-link p { font-size: 11px; color: var(--muted); line-height: 1.4; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 0.9rem 0; }
+    .faq-q { font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+    .faq-q::after { content: '+'; font-size: 18px; color: var(--muted); font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
     .faq-item.open .faq-q::after { transform: rotate(45deg); }
-
-    .faq-a {
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.2s;
-    }
-
-    .faq-item.open .faq-a {
-      max-height: 300px;
-      padding-top: 0.7rem;
-    }
-
-    /* ── USE CASES ── */
-    .use-cases {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .use-case {
-      padding: 1.2rem 1.4rem;
-      background: var(--white);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-
-    .use-case h3 {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 0.3rem;
-    }
-
-    .use-case p {
-      font-size: 12.5px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-
-    footer .logo { font-size: 16px; display: block; margin-bottom: 0.5rem; }
-
-    footer p {
-      font-size: 12px;
-      color: rgba(247,244,238,0.4);
-      line-height: 1.6;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    /* ── RESPONSIVE ── */
+    .faq-a { font-size: 13px; color: var(--muted); max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.2s; line-height: 1.7; }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 0.6rem; }
+    footer { background: var(--ink); padding: 2rem; text-align: center; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--paper); display: block; margin-bottom: 0.4rem; text-decoration: none; }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 11px; color: rgba(247,244,238,0.35); max-width: 500px; margin: 0 auto; line-height: 1.6; }
     @media (max-width: 600px) {
       .type-grid { grid-template-columns: repeat(2, 1fr); }
       .form-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
       .use-cases { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.2rem; }
-      .tool-body { padding: 1.2rem; }
+      .internal-links { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="logo">Demand<span>Letter</span>Gen</div>
+  <a href="/" class="logo">Demand<span>Letter</span>Gen</a>
   <nav>
-    <a href="#how-it-works">How it works</a>
+    <a href="/how-to-write-a-demand-letter">Guide</a>
+    <a href="/demand-letter-template">Templates</a>
     <a href="#faq">FAQ</a>
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <span class="hero-badge">✦ Free &amp; No signup required</span>
-  <h1>Generate a professional<br><em>demand letter</em> in seconds</h1>
-  <p class="hero-sub">AI-powered tool that writes ready-to-send demand letters for unpaid invoices, refunds, property damage, and more. No lawyers, no fees.</p>
-  <div class="hero-stats">
-    <div class="stat">
-      <span class="stat-num">100%</span>
-      <span class="stat-label">Free</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">&lt;60s</span>
-      <span class="stat-label">Generation time</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">6</span>
-      <span class="stat-label">Letter types</span>
-    </div>
+<div class="hero">
+  <h1>Generate a <em>demand letter</em><br>in seconds — free</h1>
+  <p>Professional, ready-to-send letters. No lawyers, no fees, no signup.</p>
+  <div class="hero-pills">
+    <span class="pill">✓ 100% Free</span>
+    <span class="pill">✓ Download PDF</span>
+    <span class="pill">✓ No signup</span>
+    <span class="pill">✓ AI-powered</span>
   </div>
-</section>
+</div>
 
-<!-- TOOL -->
-<div class="tool-card" style="margin-left:auto;margin-right:auto;max-width:720px;padding:0 1rem;" id="generator">
-  <div class="tool-header">
-    <div class="tool-header-dot"></div>
-    <h2>AI Demand Letter Generator</h2>
-  </div>
-  <div class="tool-body">
-
-    <p class="section-label">Type of demand</p>
-    <div class="type-grid">
-      <button class="type-btn active" onclick="setType(this,'payment')">💰 Unpaid payment</button>
-      <button class="type-btn" onclick="setType(this,'refund')">🔄 Refund request</button>
-      <button class="type-btn" onclick="setType(this,'damage')">🏠 Property damage</button>
-      <button class="type-btn" onclick="setType(this,'deposit')">🔑 Security deposit</button>
-      <button class="type-btn" onclick="setType(this,'contract')">📄 Contract breach</button>
-      <button class="type-btn" onclick="setType(this,'other')">⚖️ Other</button>
+<div class="tool-wrap">
+  <div class="tool-card">
+    <div class="tool-tabs">
+      <button class="tool-tab active" onclick="switchTab('generate', this)">✍ Generate Letter</button>
+      <button class="tool-tab" onclick="switchTab('example', this)">👁 See Example</button>
     </div>
 
-    <div class="divider"></div>
-
-    <div class="form-grid">
-      <div class="field">
-        <label>Your full name</label>
-        <input id="senderName" type="text" placeholder="Jane Smith">
+    <div id="tab-generate" class="tool-body">
+      <div class="type-grid">
+        <button class="type-btn active" onclick="setType(this,'payment')">💰 Unpaid payment</button>
+        <button class="type-btn" onclick="setType(this,'refund')">🔄 Refund request</button>
+        <button class="type-btn" onclick="setType(this,'damage')">🏠 Property damage</button>
+        <button class="type-btn" onclick="setType(this,'deposit')">🔑 Security deposit</button>
+        <button class="type-btn" onclick="setType(this,'contract')">📄 Contract breach</button>
+        <button class="type-btn" onclick="setType(this,'other')">⚖️ Other</button>
       </div>
-      <div class="field">
-        <label>Your address</label>
-        <input id="senderAddress" type="text" placeholder="123 Main St, New York, NY 10001">
+      <div class="divider"></div>
+      <div class="form-grid">
+        <div class="field"><label>Your full name</label><input id="senderName" type="text" placeholder="Jane Smith"></div>
+        <div class="field"><label>Your address</label><input id="senderAddress" type="text" placeholder="123 Main St, New York, NY"></div>
       </div>
-    </div>
-
-    <div class="form-grid">
-      <div class="field">
-        <label>Recipient name or company</label>
-        <input id="recipientName" type="text" placeholder="John Doe / ABC Company">
+      <div class="form-grid">
+        <div class="field"><label>Recipient name or company</label><input id="recipientName" type="text" placeholder="John Doe / ABC Company"></div>
+        <div class="field"><label>Recipient address</label><input id="recipientAddress" type="text" placeholder="456 Oak Ave, Los Angeles, CA"></div>
       </div>
-      <div class="field">
-        <label>Recipient address</label>
-        <input id="recipientAddress" type="text" placeholder="456 Oak Ave, Los Angeles, CA">
-      </div>
-    </div>
-
-    <div class="form-grid">
-      <div class="field">
-        <label>Amount owed (USD)</label>
-        <input id="amount" type="text" placeholder="2,500">
-      </div>
-      <div class="field">
-        <label>US State</label>
-        <select id="state">
-          <option value="">Select state (optional)</option>
-          <option>California</option>
-          <option>Texas</option>
-          <option>Florida</option>
-          <option>New York</option>
-          <option>Illinois</option>
-          <option>Pennsylvania</option>
-          <option>Ohio</option>
-          <option>Georgia</option>
-          <option>North Carolina</option>
-          <option>Michigan</option>
-          <option>Other / Not in US</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-grid">
-      <div class="field">
-        <label>Response deadline</label>
-        <input id="deadline" type="text" placeholder="14 days / June 1, 2026">
-      </div>
-    </div>
-
-    <div class="form-grid full">
-      <div class="field">
-        <label>Describe the situation</label>
-        <textarea id="situation" placeholder="Briefly describe what happened and why you are owed this amount. The more detail you provide, the stronger your letter will be.&#10;&#10;Example: I hired ABC Contractors to remodel my kitchen on January 15, 2026. They completed the work but have not responded to my three payment requests for the agreed amount of $2,500..."></textarea>
-      </div>
-    </div>
-
-    <p class="section-label" style="margin-top:4px;">Tone</p>
-    <div class="tone-row">
-      <button class="tone-btn active" onclick="setTone(this,'firm')">Firm &amp; professional</button>
-      <button class="tone-btn" onclick="setTone(this,'assertive')">Assertive</button>
-      <button class="tone-btn" onclick="setTone(this,'conciliatory')">Conciliatory</button>
-    </div>
-
-    <button class="btn-generate" id="generateBtn" onclick="generateLetter()">
-      Generate My Demand Letter →
-    </button>
-
-    <div id="outputSection" class="output-section" style="display:none;">
-      <div class="output-bar">
-        <span>Generated Letter</span>
-        <div class="output-actions">
-          <button class="btn-action" onclick="copyLetter()">Copy</button>
-          <button class="btn-action pdf" onclick="downloadPDF()">Download PDF</button>
+      <div class="form-grid">
+        <div class="field"><label>Amount owed ($)</label><input id="amount" type="text" placeholder="2,500"></div>
+        <div class="field"><label>US State</label>
+          <select id="state">
+            <option value="">Select state (optional)</option>
+            <option>California</option><option>Texas</option><option>Florida</option><option>New York</option><option>Illinois</option><option>Pennsylvania</option><option>Ohio</option><option>Georgia</option><option>North Carolina</option><option>Michigan</option><option>Other / Not in US</option>
+          </select>
         </div>
       </div>
-      <div id="loadingState" class="loading-state" style="display:none;">
-        <div class="spinner"></div>
-        <span>Writing your demand letter…</span>
+      <div class="form-grid">
+        <div class="field"><label>Response deadline</label><input id="deadline" type="text" placeholder="14 days / June 1, 2026"></div>
       </div>
-      <div id="errorState" class="error-state" style="display:none;"></div>
-      <pre id="outputText" class="output-text" style="display:none;"></pre>
+      <div class="form-grid full">
+        <div class="field">
+          <label>Describe the situation</label>
+          <textarea id="situation" placeholder="Briefly describe what happened and why you are owed this amount. Example: I hired ABC Contractors on January 15 to renovate my kitchen. The work was completed but they have not paid the agreed $2,500 despite three requests..."></textarea>
+        </div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="margin-bottom:6px;display:block;">Tone</label>
+        <div class="tone-row">
+          <button class="tone-btn active" onclick="setTone(this,'firm')">Firm & professional</button>
+          <button class="tone-btn" onclick="setTone(this,'assertive')">Assertive</button>
+          <button class="tone-btn" onclick="setTone(this,'conciliatory')">Conciliatory</button>
+        </div>
+      </div>
+      <button class="btn-generate" id="generateBtn" onclick="generateLetter()">Generate My Demand Letter →</button>
+      <div id="outputSection" class="output-section" style="display:none;">
+        <div class="output-bar">
+          <span>Generated Letter</span>
+          <div class="output-actions">
+            <button class="btn-action" onclick="copyLetter()">Copy</button>
+            <button class="btn-action pdf" onclick="downloadPDF()">Download PDF</button>
+          </div>
+        </div>
+        <div id="loadingState" class="loading-state" style="display:none;"><div class="spinner"></div><span>Writing your demand letter…</span></div>
+        <div id="errorState" class="error-state" style="display:none;"></div>
+        <pre id="outputText" class="output-text" style="display:none;"></pre>
+      </div>
     </div>
 
+    <div id="tab-example" class="tool-body" style="display:none;">
+      <div style="position:relative;">
+        <div class="example-letter">May 11, 2026
+
+Jane Smith
+123 Main Street
+New York, NY 10001
+
+ABC Contractors LLC
+456 Business Ave
+Los Angeles, CA 90001
+
+Subject: Formal Demand for Payment — Invoice #INV-2026-042
+
+Dear ABC Contractors LLC,
+
+This letter constitutes a formal demand for immediate payment of $2,500.00 owed for renovation services completed at 123 Main Street, New York, NY on February 28, 2026.
+
+On January 15, 2026, we entered into a written agreement for kitchen renovation services, with a total agreed payment of $2,500.00 due upon completion. The work was completed on February 28, 2026. Despite payment requests sent on March 10, March 24, and April 5, 2026, the balance remains unpaid.
+
+You are hereby demanded to remit the full amount of $2,500.00 no later than May 25, 2026.
+
+Failure to pay by this deadline will result in legal action, including filing a claim in small claims court and recovery of all legal fees.
+
+Sincerely,
+
+Jane Smith</div>
+        <div class="example-overlay">
+          <button class="example-cta" onclick="switchTab('generate', document.querySelectorAll('.tool-tab')[0])">Generate your own letter →</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- DISCLAIMER -->
-<div class="disclaimer" style="padding:0 1rem;max-width:720px;">
-  <strong>Legal disclaimer:</strong> DemandLetterGen.com generates template letters for informational purposes only. The content produced does not constitute legal advice and should not be relied upon as such. For complex legal matters, please consult a licensed attorney in your jurisdiction.
+<div class="disclaimer">
+  <strong>Legal disclaimer:</strong> DemandLetterGen.com generates template letters for informational purposes only and does not constitute legal advice. Consult a licensed attorney for complex legal matters.
 </div>
 
-<!-- HOW IT WORKS -->
 <section class="section" id="how-it-works">
   <h2 class="section-title">How it works</h2>
   <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h3>Fill in the details</h3>
-      <p>Enter your information, the recipient's details, the amount owed, and describe the situation.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h3>Generate in seconds</h3>
-      <p>Our AI writes a professional, legally-structured demand letter tailored to your situation.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h3>Download &amp; send</h3>
-      <p>Copy the letter or download it as a PDF, ready to print and mail or attach to an email.</p>
-    </div>
+    <div class="step"><div class="step-num">01</div><h3>Fill in the details</h3><p>Enter your info, the recipient, amount owed, and describe what happened.</p></div>
+    <div class="step"><div class="step-num">02</div><h3>Generate in seconds</h3><p>Our AI writes a professional, legally-structured demand letter tailored to your situation.</p></div>
+    <div class="step"><div class="step-num">03</div><h3>Download & send</h3><p>Copy the letter or download it as a PDF, ready to print or send.</p></div>
   </div>
 </section>
 
-<!-- USE CASES -->
 <section class="section">
   <h2 class="section-title">Common uses</h2>
   <div class="use-cases">
-    <div class="use-case">
-      <h3>Freelancers &amp; contractors</h3>
-      <p>Recover unpaid invoices from clients who haven't paid for your services.</p>
-    </div>
-    <div class="use-case">
-      <h3>Tenants &amp; landlords</h3>
-      <p>Demand the return of a security deposit or address lease violations.</p>
-    </div>
-    <div class="use-case">
-      <h3>Consumers</h3>
-      <p>Request refunds for defective products or services that weren't delivered.</p>
-    </div>
-    <div class="use-case">
-      <h3>Small businesses</h3>
-      <p>Enforce contracts, collect overdue payments, and resolve disputes professionally.</p>
-    </div>
+    <div class="use-case"><h3>Freelancers & contractors</h3><p>Recover unpaid invoices from clients who haven't paid for your services.</p></div>
+    <div class="use-case"><h3>Tenants & landlords</h3><p>Demand the return of a security deposit or address lease violations.</p></div>
+    <div class="use-case"><h3>Consumers</h3><p>Request refunds for defective products or services not delivered.</p></div>
+    <div class="use-case"><h3>Small businesses</h3><p>Enforce contracts, collect overdue payments, and resolve disputes.</p></div>
   </div>
 </section>
 
-<!-- FAQ -->
+<section class="section">
+  <h2 class="section-title">Learn more</h2>
+  <div class="internal-links">
+    <a href="/how-to-write-a-demand-letter" class="int-link"><div class="int-link-icon">📝</div><h3>How to write a demand letter</h3><p>Step-by-step guide with tips and examples</p></a>
+    <a href="/demand-letter-template" class="int-link"><div class="int-link-icon">📄</div><h3>Free templates</h3><p>Copy-paste templates for every situation</p></a>
+    <a href="/security-deposit-demand-letter" class="int-link"><div class="int-link-icon">🔑</div><h3>Security deposit letters</h3><p>Get your deposit back from your landlord</p></a>
+  </div>
+</section>
+
 <section class="section" id="faq">
   <h2 class="section-title">Frequently asked questions</h2>
   <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What is a demand letter?</div>
-      <div class="faq-a">A demand letter is a formal written notice sent to an individual or business requesting that they fulfill a legal obligation — typically paying a debt, issuing a refund, or repairing damages — before you escalate to legal action. Courts often require proof that you made a good-faith attempt to resolve the dispute before filing a lawsuit.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Is this tool really free?</div>
-      <div class="faq-a">Yes, completely free. No signup, no credit card, no hidden fees. You can generate as many letters as you need.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Do I need a lawyer to send a demand letter?</div>
-      <div class="faq-a">No. Anyone can send a demand letter — you do not need to be a lawyer or hire one. However, for high-value disputes or complex legal matters, consulting an attorney is always advisable.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How should I send the letter?</div>
-      <div class="faq-a">For the strongest legal standing, send the letter via certified mail with return receipt requested. This creates a documented record that the recipient received it. Email can also work for less formal disputes.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What if the recipient ignores my letter?</div>
-      <div class="faq-a">If the deadline passes without a response, your next options include filing in small claims court (for amounts typically under $10,000–$15,000 depending on your state), mediation, or consulting an attorney about civil litigation.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Is my data stored or shared?</div>
-      <div class="faq-a">No. Your information is processed in real time to generate the letter and is not stored on our servers or shared with third parties.</div>
-    </div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a demand letter?</div><div class="faq-a">A demand letter is a formal written notice requesting that someone fulfill a legal obligation — typically paying a debt or issuing a refund — before you take legal action. Courts often require proof of a good-faith attempt to resolve a dispute before filing a lawsuit.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this tool really free?</div><div class="faq-a">Yes, completely free. No signup, no credit card, no hidden fees.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need a lawyer to send a demand letter?</div><div class="faq-a">No. Anyone can write and send a demand letter. For complex disputes or large amounts, consulting an attorney is advisable.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How should I send the letter?</div><div class="faq-a">Send via certified mail with return receipt requested. This creates a documented record that the recipient received it — important if you need to go to court.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if they ignore my letter?</div><div class="faq-a">Your next options include filing in small claims court (typically for amounts under $10,000–$15,000 depending on your state), mediation, or consulting an attorney about civil litigation.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data stored?</div><div class="faq-a">No. Your information is processed in real time and is not stored on our servers or shared with third parties.</div></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <span class="logo">Demand<span>Letter</span>Gen</span>
-  <p>This tool generates template letters for informational purposes only and does not constitute legal advice. Always consult a licensed attorney for specific legal situations. © 2026 DemandLetterGen.com</p>
+  <a href="/" class="footer-logo">Demand<span>Letter</span>Gen</a>
+  <p>Template letters for informational purposes only. Not legal advice. © 2026 DemandLetterGen.com</p>
 </footer>
 
 <script>
@@ -829,8 +305,11 @@
     el.classList.add('active');
   }
 
-  function toggleFaq(el) {
-    el.parentElement.classList.toggle('open');
+  function switchTab(tab, btn) {
+    document.getElementById('tab-generate').style.display = tab === 'generate' ? 'block' : 'none';
+    document.getElementById('tab-example').style.display = tab === 'example' ? 'block' : 'none';
+    document.querySelectorAll('.tool-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
   }
 
   function copyLetter() {
@@ -848,17 +327,13 @@
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: 'mm', format: 'letter' });
     const margin = 25;
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const maxWidth = pageWidth - margin * 2;
+    const maxWidth = doc.internal.pageSize.getWidth() - margin * 2;
     doc.setFont('times', 'normal');
     doc.setFontSize(11);
     const lines = doc.splitTextToSize(text, maxWidth);
     let y = margin;
     lines.forEach(line => {
-      if (y > doc.internal.pageSize.getHeight() - margin) {
-        doc.addPage();
-        y = margin;
-      }
+      if (y > doc.internal.pageSize.getHeight() - margin) { doc.addPage(); y = margin; }
       doc.text(line, margin, y);
       y += 6;
     });
@@ -869,100 +344,51 @@
     const senderName = document.getElementById('senderName').value.trim();
     const recipientName = document.getElementById('recipientName').value.trim();
     const situation = document.getElementById('situation').value.trim();
-
     if (!senderName || !recipientName || !situation) {
       alert('Please fill in at least your name, recipient name, and situation description.');
       return;
     }
-
     const amount = document.getElementById('amount').value.trim();
     const deadline = document.getElementById('deadline').value.trim();
     const senderAddress = document.getElementById('senderAddress').value.trim();
     const recipientAddress = document.getElementById('recipientAddress').value.trim();
     const state = document.getElementById('state').value;
     const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-    const typeMap = {
-      payment: 'unpaid payment / unpaid invoice',
-      refund: 'refund request',
-      damage: 'property damage claim',
-      deposit: 'security deposit return',
-      contract: 'breach of contract',
-      other: 'general legal demand'
-    };
-
-    const toneMap = {
-      firm: 'firm and professional — assertive but courteous, focused on facts',
-      assertive: 'assertive and direct — strong language, emphasizing legal consequences',
-      conciliatory: 'conciliatory — professional but leaving room for amicable resolution'
-    };
-
-    const prompt = `You are a professional legal document writer. Write a complete, formal demand letter with the following details:
-
+    const typeMap = { payment: 'unpaid payment / unpaid invoice', refund: 'refund request', damage: 'property damage claim', deposit: 'security deposit return', contract: 'breach of contract', other: 'general legal demand' };
+    const toneMap = { firm: 'firm and professional — assertive but courteous, focused on facts', assertive: 'assertive and direct — strong language, emphasizing legal consequences', conciliatory: 'conciliatory — professional but leaving room for amicable resolution' };
+    const prompt = `You are a professional legal document writer. Write a complete, formal demand letter:
 Type: ${typeMap[selectedType]}
 Tone: ${toneMap[selectedTone]}
 Date: ${today}
 Sender: ${senderName}${senderAddress ? ', ' + senderAddress : ''}
 Recipient: ${recipientName}${recipientAddress ? ', ' + recipientAddress : ''}
 Amount: ${amount ? '$' + amount : 'not specified'}
-Response deadline: ${deadline || '14 days from the date of this letter'}
+Deadline: ${deadline || '14 days from today'}
 ${state ? 'State: ' + state : ''}
 Situation: ${situation}
-
-Write the full demand letter including:
-- Date and addresses formatted as a formal letter
-- Subject line
-- Professional salutation
-- Clear opening statement of the demand
-- Factual account of the situation with specific details
-- The exact amount owed and calculation if relevant
-- A firm deadline for response or payment
-- Consequences if ignored (mention legal action, small claims court, or other remedies)
-- Professional closing
-
-Format it exactly as a real letter ready to print and send. Use plain paragraphs, not bullet points. Keep it factual, professional, and under 500 words.`;
-
+Write a complete professional demand letter with date, addresses, subject line, salutation, facts, demand, deadline, consequences, and closing. NO placeholder text like [Your Title] or [Your Phone]. Sign off with the sender name only. Plain paragraphs, under 500 words.`;
     const btn = document.getElementById('generateBtn');
-    btn.disabled = true;
-    btn.textContent = 'Generating…';
-
+    btn.disabled = true; btn.textContent = 'Generating…';
     const outputSection = document.getElementById('outputSection');
     const loadingState = document.getElementById('loadingState');
     const outputText = document.getElementById('outputText');
     const errorState = document.getElementById('errorState');
-
     outputSection.style.display = 'block';
     loadingState.style.display = 'flex';
     outputText.style.display = 'none';
     errorState.style.display = 'none';
     outputSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
     try {
-    const response = await fetch('/api/generate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-    });
-    
-    const data = await response.json();
-    
-    if (data.text) {
-      loadingState.style.display = 'none';
-      outputText.style.display = 'block';
-      outputText.textContent = data.text;
-    } else {
-      throw new Error('No response');
-    }
+      const response = await fetch('/api/generate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+      const data = await response.json();
+      if (data.text) { loadingState.style.display = 'none'; outputText.style.display = 'block'; outputText.textContent = data.text; }
+      else throw new Error('No response');
     } catch (err) {
-      loadingState.style.display = 'none';
-      errorState.style.display = 'block';
+      loadingState.style.display = 'none'; errorState.style.display = 'block';
       errorState.textContent = 'Something went wrong. Please try again in a moment.';
     }
-
-    btn.disabled = false;
-    btn.textContent = 'Generate My Demand Letter →';
+    btn.disabled = false; btn.textContent = 'Generate My Demand Letter →';
   }
 </script>
-
 </body>
 </html>
