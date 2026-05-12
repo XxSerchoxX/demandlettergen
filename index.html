@@ -378,12 +378,23 @@ Write a complete professional demand letter with date, addresses, subject line, 
     outputText.style.display = 'none';
     errorState.style.display = 'none';
     outputSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    try {
-      const response = await fetch('/api/generate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
-      const data = await response.json();
-      if (data.text) { loadingState.style.display = 'none'; outputText.style.display = 'block'; outputText.textContent = data.text; }
-      else throw new Error('No response');
-    } catch (err) {
+    const MAX_RETRIES = 3;
+    let success = false;
+    for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        if (attempt > 1) {
+          loadingState.querySelector('span').textContent = `Writing your demand letter… (attempt ${attempt} of ${MAX_RETRIES})`;
+          await new Promise(r => setTimeout(r, 1500));
+        }
+        const response = await fetch('/api/generate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+        const data = await response.json();
+        if (data.text) {
+          loadingState.style.display = 'none'; outputText.style.display = 'block'; outputText.textContent = data.text;
+          success = true; break;
+        }
+      } catch (err) { /* retry */ }
+    }
+    if (!success) {
       loadingState.style.display = 'none'; errorState.style.display = 'block';
       errorState.textContent = 'Something went wrong. Please try again in a moment.';
     }
